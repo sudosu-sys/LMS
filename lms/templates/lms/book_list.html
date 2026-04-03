@@ -1,5 +1,75 @@
-this is the book list html file 
+<head> 
+    <title>Welcome to our library :)</title>
+    <style>
+      /* 1. The "World" Settings */
+      body {
+        background-color: #1a1a1a; /* Light Black / Charcoal */
+        color: #e0e0e0;            /* Soft White (not blinding) */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;    /* Stack Title on top of Books */
+        align-items: center;       /* Center everything horizontally */
+      }
 
-{% for book in books %}
-    <h3> {{ book.title }} was written by {{ book.author }} and published on {{ book.published_date }} and it costs {{book.price}}.</h3>
-{% endfor %}
+      /* 2. The Big Title */
+      h1 {
+        color: #FFD700;            /* Gold */
+        font-size: 3rem;
+        margin-bottom: 40px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+
+      /* 3. The Book Grid */
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;                 /* Adds equal space between cards */
+        max-width: 1200px;
+      }
+
+      /* 4. The Individual Cards */
+      .book-card {
+        background-color: #262626; /* Slightly lighter than body */
+        border: 1px solid #333333; /* Subtle border */
+        border-radius: 12px;
+        padding: 25px;
+        width: 280px;
+        transition: transform 0.2s; /* Makes it "pop" when you hover! */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      }
+
+      /* 5. Small Details */
+      .book-card:hover {
+        transform: translateY(-5px); /* Card lifts up when mouse touches it */
+        border-color: #FFD700;      /* Border turns gold on hover */
+      }
+
+      .price-tag {
+        display: inline-block;
+        background-color: #FFD700;
+        color: #1a1a1a;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    </style> 
+</head>
+
+<body>
+    <h1>Welcome to our library :)</h1>
+
+    <div class="container">
+        {% for book in books %}
+            <div class="book-card">
+                <h3>{{ book.title }}</h3>
+                <p style="opacity: 0.8;">By {{ book.author }}</p>
+                <p style="font-size: 0.9rem;">Released: {{ book.published_date }}</p>
+                <div class="price-tag">${{ book.price }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
