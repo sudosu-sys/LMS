@@ -1,1 +1,5 @@
 this is the book list html file 
+
+{% for book in books %}
+    <h3> {{ book.title }} was written by {{ book.author }} and published on {{ book.published_date }} and it costs 'thismuch'</h3>
+{% endfor %}

@@ -5,10 +5,10 @@ from lms.models import Book
 # Create your views here.
 def book_list(request):
 
-    books = Book.objects.all()
+    all_books = Book.objects.all() # 500,000 books
 
     context = {
-        'books': books,
+        'books': all_books,
     }
     
     return render(request, 'lms/book_list.html', context)
